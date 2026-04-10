@@ -13,31 +13,32 @@ public class Competidor {
     protected int ranking;
     protected double estatura;
     protected double peso;
+    protected Equipo equipo;
 
-    public Competidor(String nombre, int edad, String pais, int ranking, double estatura, double peso) {
+    public Competidor(String nombre, int edad, String pais, int ranking, double estatura, double peso, Equipo equipo) {
         this.nombre = nombre;
         this.edad = edad;
         this.pais = pais;
         this.ranking = ranking;
         this.estatura = estatura;
         this.peso = peso;
+        this.equipo = equipo;
     }
 
-    // GETTERS Y SETTERS
-    public String getNombre() { return nombre; }
-    public int getRanking() { return ranking; }
+    public int getRanking() {
+        return ranking;
+    }
 
-    //Metodo para actualizar ranking
+    // 🔹 Métodos con sobrecarga
     public void actualizarRanking(int puntos) {
-        ranking = ranking - puntos;
+        ranking -= puntos;
+        if (ranking < 1) ranking = 1;
     }
 
-    // Sobrecarga 
     public void actualizarRanking(int puntos, int penalizacion) {
-        ranking = ranking - (puntos - penalizacion);
+        ranking -= (puntos - penalizacion);
     }
 
-    // Metodo con estructura anidada 
     public void actualizarRanking(double puntos, boolean bonus) {
         if (bonus) {
             if (puntos > 10) {
@@ -50,10 +51,11 @@ public class Competidor {
         }
     }
 
-    // Sobreescritura sugerida
     @Override
     public String toString() {
-        return "Nombre: " + nombre + ", Pais: " + pais + ", Ranking: " + ranking;
+        return "Nombre: " + nombre +
+               ", Pais: " + pais +
+               ", Ranking: " + ranking +
+               ", " + equipo.toString();
     }
 }
-

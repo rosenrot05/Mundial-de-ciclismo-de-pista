@@ -13,9 +13,13 @@ import Vista.VistaCompetencia;
 public class Aplicacion {
 
     public static void main(String[] args) {
-                VistaCompetencia vista = new VistaCompetencia();
-        int cantidad = vista.leerCantidad();
 
+        VistaCompetencia vista = new VistaCompetencia();
+        Competencia competencia = new Competencia();
+
+        vista.mostrar(competencia.getInfo());
+
+        int cantidad = vista.leerCantidad();
         ControladorCompetencia controlador = new ControladorCompetencia(cantidad);
 
         for (int i = 0; i < cantidad; i++) {
@@ -27,24 +31,25 @@ public class Aplicacion {
             double estatura = vista.leerEstatura();
             double peso = vista.leerPeso();
 
+            String nombreEquipo = vista.leerEquipo();
+            Equipo equipo = new Equipo(nombreEquipo, pais);
+
             int tipo = vista.tipoCompetidor();
             double extra = vista.datoExtra(tipo);
 
             Competidor c;
 
-            if (tipo == 1) {
-                c = new Velocista(nombre, edad, pais, ranking, estatura, peso, extra);
-            } else {
-                c = new Resistencia(nombre, edad, pais, ranking, estatura, peso, extra);
-            }
+            if (tipo == 1)
+                c = new Velocista(nombre, edad, pais, ranking, estatura, peso, extra, equipo);
+            else
+                c = new Resistencia(nombre, edad, pais, ranking, estatura, peso, extra, equipo);
 
-            // aplicar logica (sobrecarga)
-            c.actualizarRanking(5);
+            int puntos = vista.leerPuntos();
+            c.actualizarRanking(puntos);
 
             controlador.agregarCompetidor(c);
         }
 
         vista.mostrar(controlador.mostrarCompetidores());
     }
-    
 }
