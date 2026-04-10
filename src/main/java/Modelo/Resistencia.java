@@ -1,13 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Modelo;
 
 /**
  *
  * @author rosam
  */
-public class Resistencia {
+public class Resistencia extends Competidor {
     
+    private double resistencia;
+
+    public Resistencia(String nombre, int edad, String pais, int ranking, double estatura, double peso, double resistencia) {
+        super(nombre, edad, pais, ranking, estatura, peso);
+        this.resistencia = resistencia;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Tipo: Resistencia, Nivel: " + resistencia;
+    }
 }
