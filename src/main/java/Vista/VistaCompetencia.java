@@ -84,7 +84,7 @@ public class VistaCompetencia {
         int tipo;
         do {
             tipo = Integer.parseInt(JOptionPane.showInputDialog(
-                "Tipo de competidor: Velocista Resistencia"));
+                "Tipo de competidor:\n1. Velocista \n2. Resistencia"));
         } while (tipo != 1 && tipo != 2);
         return tipo;
     }
