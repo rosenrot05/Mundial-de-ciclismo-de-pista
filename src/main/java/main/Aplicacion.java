@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.ciclismopista;
+package main;
 
 /**
  *
  * @author rosam
  */
-public class CiclismoPista {
+public class Aplicacion {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
